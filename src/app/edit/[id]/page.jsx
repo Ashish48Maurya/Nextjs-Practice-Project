@@ -48,8 +48,8 @@ const EditPage = ({ params }) => {
     }
     const formData = new FormData();
     formData.append("file", image);
-    formData.append("upload_preset", cloudID);
-    const cloudinaryRes = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`, {
+    formData.append("upload_preset", id);
+    const cloudinaryRes = await fetch(`https://api.cloudinary.com/v1_1/${name}/auto/upload`, {
       method: "POST",
       body: formData,
     });
