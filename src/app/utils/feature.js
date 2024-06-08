@@ -3,8 +3,8 @@ const {serialize} =  require('cookie')
 const jwt = require('jsonwebtoken')
 export async function mongoConnect() {
     try {
-        // await mongoose.connect(process.env.MONGO_URL);
-        await mongoose.connect("mongodb://localhost:27017/blogify1");
+        await mongoose.connect(process.env.MONGO_URL);
+        // await mongoose.connect("mongodb://localhost:27017/blogify1");
         console.log("Connection Successful...");
     } catch (err) {
         console.error(err);
@@ -24,8 +24,7 @@ export const cookieSetter = (res, token, set) => {
 };
 
 export const generateToken = (_id) => {
-    // return jwt.sign({ _id }, process.env.JWT_SECRET);
-    return jwt.sign({ _id }, "YOURSECRETKKEYHERE");
+    return jwt.sign({ _id }, process.env.JWT_SECRET);
 };
 
 export const checkAuth = async (req) => {
